@@ -32,6 +32,14 @@
       $insertar->bind_param("issss",$this->ci,$this->nombre,$this->ap_paterno,$this->ap_materno,$this->numero_telf);
       $insertar->execute();
     }
+
+    //Funcion para actualizar
+    public function actualizar(){
+      $this->conectar();
+      $update = mysqli_prepare($this->con,"update alumnos set nombre=?,ap_paterno=?,ap_materno=?,numero_telf=? where ci=?");
+      $update->bind_param("ssssi",$this->nombre,$this->ap_paterno,$this->ap_materno,$this->numero_telf,$this->ci);
+      $update->execute();
+    }
   }
 
 
