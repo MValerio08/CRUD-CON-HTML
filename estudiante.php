@@ -40,6 +40,15 @@
       $update->bind_param("ssssi",$this->nombre,$this->ap_paterno,$this->ap_materno,$this->numero_telf,$this->ci);
       $update->execute();
     }
+
+    //Funcion para eliminar
+    public function eliminar(){
+      $del = new Conexion();
+      $del->conectar();
+      $delete = mysqli_prepare($del->con,"delete from alumnos where ci=?");
+      $delete->bind_param("i",$this->ci);
+      $delete->execute();
+    }
   }
 
 
